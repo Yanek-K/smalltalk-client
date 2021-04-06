@@ -10,14 +10,13 @@ const Home = () => {
     axios
       .get("/posts")
       .then((res) => {
-        console.log(res.data);
         setPosts(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
   let recentPostsMarkup = posts ? (
-    posts.map((post) => <Post post={post} key={post} />)
+    posts.map((post) => <Post post={post} key={post.postId} />)
   ) : (
     <p>Loading...</p>
   );

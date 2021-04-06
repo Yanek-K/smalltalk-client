@@ -1,6 +1,8 @@
 import React from "react";
-import Link from "react-router-dom/Link";
+import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 //MUI card styles
 import Card from "@material-ui/core/Card";
@@ -22,6 +24,8 @@ const styles = {
     objectFit: "cover",
   },
 };
+
+dayjs.extend(relativeTime);
 
 const Post = ({
   classes,
@@ -52,7 +56,7 @@ const Post = ({
           {userHandle}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {createdAt}
+          {dayjs(createdAt).fromNow()}
         </Typography>
         <Typography variant="body1">{body}</Typography>
       </CardContent>
