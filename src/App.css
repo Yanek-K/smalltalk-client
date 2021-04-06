@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
+
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Baskervville", serif;
+  background-color: #fcfcfc;
 }
 
 .container {
@@ -12,4 +13,9 @@ body {
 
 .nav-container {
   margin: auto;
+  font-family: "Baskervville", serif;
+}
+
+a {
+  text-decoration: none;
 }
