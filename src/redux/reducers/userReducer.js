@@ -1,8 +1,8 @@
 import {
   SET_USER,
   SET_ERRORS,
-  CLEAR_ERRORS,
-  LOADING_UI,
+  // CLEAR_ERRORS,
+  // LOADING_UI,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
 } from "./../types";
@@ -12,9 +12,10 @@ const initialState = {
   credentials: {},
   likes: [],
   notifications: [],
+  errors: [],
 };
 
-export default function (state = initialState, action) {
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_AUTHENTICATED:
       return {
@@ -28,7 +29,12 @@ export default function (state = initialState, action) {
         authenticated: true,
         ...action.payload,
       };
+    case SET_ERRORS:
+      return {
+        ...state,
+        errors: action.payload,
+      };
     default:
       return state;
   }
-}
+};

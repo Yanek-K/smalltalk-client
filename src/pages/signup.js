@@ -1,57 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/LogoNoBack.png";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-//Material UI
+// Material UI
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+// Redux
+import { signupUser } from "../redux/actions/userActions";
+import { useSelector, useDispatch } from "react-redux";
+
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
 
-// const handleChange = (e) => {
-//   [e.target.name] = e.target.value;
-// };
+const mapState = (state) => ({
+  UI: state.UI,
+  loading: state.UI.loading,
+});
 
 const Signup = ({ classes }) => {
+  const dispatch = useDispatch();
+  const { UI, loading } = useSelector(mapState);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const [handle, setHandle] = useState("");
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     const newUserData = {
       email,
       password,
       confirmPassword,
       handle,
     };
-    axios
-      .post("/signup", newUserData)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch((err) => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
+    dispatch(signupUser(newUserData));
   };
+
+  useEffect(() => {
+    if (UI.errors !== null) {
+      setErrors(UI.errors);
+    }
+  }, [UI.errors]);
 
   return (
     <Grid container className={classes.form}>
@@ -131,7 +129,7 @@ const Signup = ({ classes }) => {
           <br />
           <small>
             Already have an account? Login{" "}
-            <Link to="/signup" className={classes.signupLink}>
+            <Link to="/login" className={classes.signupLink}>
               here
             </Link>
           </small>

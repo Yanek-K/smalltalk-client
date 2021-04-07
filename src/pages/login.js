@@ -3,7 +3,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/LogoNoBack.png";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 
 //Material UI
 import Grid from "@material-ui/core/Grid";
@@ -14,22 +13,18 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Redux
 import { loginUser } from "../redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
 });
 
-// const handleChange = (e) => {
-//   [e.target.name] = e.target.value;
-// };
-
 const mapState = (state) => ({
-  user: state.user,
   UI: state.UI,
 });
 
 const Login = ({ classes }) => {
-  const { user, UI } = useSelector(mapState);
+  const { UI } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -54,7 +49,7 @@ const Login = ({ classes }) => {
     if (UI.errors !== null) {
       setErrors(UI.errors);
     }
-  });
+  }, [UI.errors]);
 
   return (
     <Grid container className={classes.form}>
