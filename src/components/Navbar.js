@@ -14,12 +14,13 @@ const styles = {
   },
   wrap: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     height: "20px",
+    // width: "100%",
   },
   logo: {
     width: "7rem",
-    marginLeft: "-20px",
+    marginLeft: "-100px",
   },
   navBarButtons: {
     display: "flex",
@@ -29,6 +30,9 @@ const styles = {
     textTransform: "none",
     fontSize: "1.25rem",
     fontFamily: "Baskerrvville",
+    marginTop: 15,
+  },
+  burgerMenu: {
     marginTop: 15,
   },
 };
@@ -65,8 +69,8 @@ const Navbar = ({ classes }) => {
               Signup
             </Button>
           </div>
-          <div>
-            <p>Burger Menu</p>
+          <div className={classes.burgerMenu}>
+            <div>-</div>
           </div>
         </Toolbar>
       </AppBar>

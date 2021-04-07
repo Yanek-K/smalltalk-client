@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/LogoNoBack.png";
-import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 //Material UI
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
+// Redux
+import { loginUser } from "../redux/actions/userActions";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -20,34 +23,38 @@ const styles = (theme) => ({
 //   [e.target.name] = e.target.value;
 // };
 
+const mapState = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
 const Login = ({ classes }) => {
+  const { user, UI } = useSelector(mapState);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const loading = UI.loading;
 
-  const history = useHistory();
+  //  EDIT THIS WHEN ACTION IS CREATED
+  // const errors = UI.errors
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     const userData = {
       email,
       password,
     };
-    axios
-      .post("/login", userData)
-      .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        setLoading(false);
-        history.push("/");
-      })
-      .catch((err) => {
-        setErrors(err.response.data);
-        setLoading(false);
-      });
+    dispatch(loginUser(userData, history));
   };
+
+  useEffect(() => {
+    if (UI.errors !== null) {
+      setErrors(UI.errors);
+    }
+  });
 
   return (
     <Grid container className={classes.form}>
