@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import PropTypes from "prop-types";
 import AppIcon from "../images/LogoNoBack.png";
 import { Link, useHistory } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
@@ -40,8 +40,9 @@ const styles = (theme) => ({
   },
 
   button: {
-    display: "flex",
-    justifyContent: "center",
+    // position: "absolute",
+    right: "2rem",
+    float: "right",
   },
   profileImage: {
     width: 150,
@@ -55,6 +56,7 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginTop: "50px",
   },
 
   bioDetails: {
