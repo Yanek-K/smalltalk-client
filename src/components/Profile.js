@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+import EditDetails from "./EditDetails";
 
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -16,6 +17,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import Edit from "@material-ui/icons/Edit";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -39,11 +41,6 @@ const styles = (theme) => ({
     marginBottom: "-25px",
   },
 
-  button: {
-    // position: "absolute",
-    right: "2rem",
-    float: "right",
-  },
   profileImage: {
     width: 150,
     height: 150,
@@ -76,6 +73,9 @@ const styles = (theme) => ({
   },
   text: {
     paddingLeft: 15,
+  },
+  details: {
+    display: "flex",
   },
 });
 
@@ -117,11 +117,6 @@ const Profile = ({ classes }) => {
               hidden="hidden"
             />
           </div>
-          <Tooltip title="Edit Profile Picture" placement="top">
-            <IconButton onClick={handleEditImage} className={classes.button}>
-              <Edit color="primary" />
-            </IconButton>
-          </Tooltip>
 
           <hr className={classes.line} />
           <div className={classes.profileDetails}>
@@ -156,6 +151,22 @@ const Profile = ({ classes }) => {
                 Joined {dayjs(createdAt).format("MMM YYYY")}
               </span>
             </div>
+            <div className={classes.details}>
+              <Tooltip title="Edit Profile Picture" placement="top">
+                <IconButton
+                  onClick={handleEditImage}
+                  className={classes.button}
+                >
+                  <Edit color="primary" />
+                </IconButton>
+              </Tooltip>
+              <EditDetails />
+              <Tooltip title="Logout" placement="top">
+                <IconButton onClick={() => dispatch(logoutUser())}>
+                  <ExitToAppIcon color="primary">Logout</ExitToAppIcon>
+                </IconButton>
+              </Tooltip>
+            </div>
           </div>
         </div>
       </Paper>
@@ -185,7 +196,7 @@ const Profile = ({ classes }) => {
       </Paper>
     )
   ) : (
-    <p>Loadin...</p>
+    <p>Loading...</p>
   );
 
   return profileMarkup;
