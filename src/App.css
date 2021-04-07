@@ -1,19 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Baskervville&display=swap");
-
 html,
 body {
-  font-family: "Baskervville", serif;
+  font-family: "Baskervville";
   background-color: #fcfcfc;
+  margin: 0;
+  padding: 0;
 }
-
 .container {
   margin: 80px auto 0 auto;
   max-width: 1200px;
-}
-
-.nav-container {
-  margin: auto;
-  font-family: "Baskervville", serif;
+  font-family: "Baskervville";
 }
 
 a {

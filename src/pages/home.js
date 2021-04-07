@@ -22,7 +22,10 @@ const Home = () => {
   );
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
+      <Grid item sm={8} xs={12}>
+        <p>Post to the conversation!</p>
+      </Grid>
       <Grid item sm={8} xs={12}>
         {recentPostsMarkup}
       </Grid>
