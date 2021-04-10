@@ -8,6 +8,7 @@ import Profile from "../components/Profile";
 
 import { getPosts } from "../redux/actions/dataActions";
 import PostaPost from "../components/PostaPost";
+import BurgerMenu from "../components/BurgerMenu";
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
@@ -33,13 +34,16 @@ const Home = () => {
     <div>
       {authenticated ? (
         <Grid container spacing={4}>
-          <Grid item md={8} sm={8} xs={12}>
+          <Grid item md={8} sm={12} xs={1}>
             <PostaPost />
           </Grid>
-          <Grid item md={8} sm={8} xs={12}>
+          <Grid item xs={11}>
+            <BurgerMenu />
+          </Grid>
+          <Grid item md={8} sm={12} xs={12}>
             {recentPostsMarkup}
           </Grid>
-          <Grid item md={4} sm={4} xs={12}>
+          <Grid item md={4} sm={12} xs={12}>
             <Profile />
           </Grid>
         </Grid>

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,9 +11,9 @@ import Logo from "../images/LogoMain.png";
 
 //Redux
 import { logoutUser } from "../redux/actions/userActions";
-import PostaPost from "./PostaPost";
+import { openSide } from "../redux/actions/navActions";
 
-const styles = {
+const styles = (theme) => ({
   navbar: {
     display: "flex",
   },
@@ -21,12 +21,27 @@ const styles = {
     display: "flex",
     justifyContent: "space-evenly",
     height: "20px",
-    // width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      marginLeft: 0,
+      paddingLeft: 0,
+      justifyContent: "space-evenly",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      justifyContent: "space-evenly",
+    },
   },
   logo: {
     width: "7rem",
-    marginLeft: "-100px",
+    marginLeft: "-70px",
+    [theme.breakpoints.down("sm")]: {
+      width: "6.5rem",
+      marginRight: "0px",
+      marginLeft: "-80px",
+    },
   },
+
   navBarButtons: {
     display: "flex",
   },
@@ -35,16 +50,34 @@ const styles = {
     flexDirection: "row",
   },
   button: {
-    width: "150px",
     textTransform: "none",
     fontSize: "1.25rem",
     fontFamily: "Baskerrvville",
     marginTop: 15,
+    marginRight: "3rem",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "0.9rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
   },
   burgerMenu: {
-    marginTop: 15,
+    marginBottom: 50,
+    marginRight: -35,
+    cursor: "pointer",
   },
-};
+  burgerItems: {
+    color: "#314455",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+      color: "white",
+      // maxHeight: "1%",
+      marginBottom: -34,
+      fontSize: 30,
+    },
+  },
+});
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
@@ -115,8 +148,13 @@ const Navbar = ({ classes }) => {
               </Fragment>
             )}
           </div>
-          <div className={classes.burgerMenu}>
-            <div>-</div>
+          <div
+            className={classes.burgerMenu}
+            onClick={(e) => dispatch(openSide())}
+          >
+            <div className={classes.burgerItems}>_</div>
+            <div className={classes.burgerItems}>_</div>
+            <div className={classes.burgerItems}>_</div>
           </div>
         </Toolbar>
       </AppBar>

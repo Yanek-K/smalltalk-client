@@ -26,6 +26,7 @@ const styles = {
     marginTop: 20,
     marginBottom: 20,
     height: 150,
+    zIndex: "1 !important",
   },
   image: {
     minWidth: 120,

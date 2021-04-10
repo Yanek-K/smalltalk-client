@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import { userReducer } from "./reducers/userReducer";
 import { dataReducer } from "./reducers/dataReducer";
 import { UIReducer } from "./reducers/uiReducer";
+import { navReducer } from "./reducers/navReducer";
 
 const initialState = {};
 
@@ -13,6 +14,7 @@ const reducers = combineReducers({
   user: userReducer,
   data: dataReducer,
   UI: UIReducer,
+  nav: navReducer,
 });
 
 const store = createStore(

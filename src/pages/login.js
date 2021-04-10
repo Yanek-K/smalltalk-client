@@ -16,6 +16,37 @@ import { useDispatch, useSelector } from "react-redux";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
+
+  image: {
+    margin: "80px auto 25px auto",
+    width: "25%",
+    [theme.breakpoints.down("xs")]: {
+      width: "20%",
+      marginTop: 30,
+    },
+  },
+  pageTitle: {
+    margin: "10px auto 20px auto",
+    fontFamily: "Baskervville",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "25px",
+    },
+  },
+  textField: {
+    margin: "10px auto 10px auto",
+    [theme.breakpoints.down("xs")]: {
+      width: "65%",
+    },
+  },
+  button: {
+    marginTop: 35,
+    marginBottom: 20,
+    position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      width: "45%",
+      marginBottom: 30,
+    },
+  },
 });
 
 const mapState = (state) => ({
@@ -53,7 +84,7 @@ const Login = ({ classes }) => {
   return (
     <Grid container className={classes.form}>
       <Grid item sm />
-      <Grid item sm xs>
+      <Grid item>
         <img src={AppIcon} alt="logo" className={classes.image} />
         <Typography variant="h4" className={classes.pageTitle}>
           Login

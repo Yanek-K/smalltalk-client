@@ -19,7 +19,7 @@ import TextField from "@material-ui/core/TextField";
 
 const styles = {
   card: {
-    margin: "0px 0px 0px",
+    margin: "10px 0px 0px",
   },
   content: {
     marginTop: -5,
@@ -27,9 +27,9 @@ const styles = {
     height: "80px",
   },
   openButton: {
-    margin: "0 0px 0",
+    margin: "0 0px -20px",
     alignSelf: "center",
-    // marginTop: 10,
+    // float: "right",
   },
   submitButton: {
     margin: "15px 5px 10px 0px",
