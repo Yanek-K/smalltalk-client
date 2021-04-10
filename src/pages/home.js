@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Post from "../components/Post";
 import Profile from "../components/Profile";
 
+import { getPosts } from "../redux/actions/dataActions";
+
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
+  data: state.data,
 });
 
 const Home = () => {
-  const { authenticated } = useSelector(mapState);
-  const [posts, setPosts] = useState(null);
+  const dispatch = useDispatch();
+  const { authenticated, data } = useSelector(mapState);
+  const { posts } = data;
+
   useEffect(() => {
-    axios
-      .get("/posts")
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    dispatch(getPosts());
+  }, [dispatch]);
 
   let recentPostsMarkup = posts ? (
     posts.map((post) => <Post post={post} key={post.postId} />)
@@ -31,14 +31,14 @@ const Home = () => {
   return (
     <div>
       {authenticated ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           <Grid item sm={8} xs={12}>
             <p>Post to the conversation!</p>
           </Grid>
-          <Grid item sm={8} xs={12}>
+          <Grid item md={8} sm={8} xs={12}>
             {recentPostsMarkup}
           </Grid>
-          <Grid item sm={4} xs={12}>
+          <Grid item md={4} sm={4} xs={12}>
             <Profile />
           </Grid>
         </Grid>

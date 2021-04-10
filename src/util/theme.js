@@ -7,7 +7,7 @@ export const themeFile = {
     },
     secondary: {
       light: "#679944",
-      main: "#82c43c",
+      main: "#71ab33",
       dark: "#4c6e4c",
     },
   },
