@@ -76,6 +76,13 @@ const styles = (theme) => ({
   },
   details: {
     display: "flex",
+    marginTop: "10px",
+  },
+  notLoggedIn: {
+    padding: 20,
+    marginTop: 180,
+    width: "70%",
+    margin: "0 auto",
   },
 });
 
@@ -161,17 +168,12 @@ const Profile = ({ classes }) => {
                 </IconButton>
               </Tooltip>
               <EditDetails />
-              <Tooltip title="Logout" placement="top">
-                <IconButton onClick={() => dispatch(logoutUser())}>
-                  <ExitToAppIcon color="primary">Logout</ExitToAppIcon>
-                </IconButton>
-              </Tooltip>
             </div>
           </div>
         </div>
       </Paper>
     ) : (
-      <Paper className={classes.paper}>
+      <Paper className={classes.notLoggedIn}>
         <Typography variant="body2" align="center">
           No profile found, please login again
         </Typography>
