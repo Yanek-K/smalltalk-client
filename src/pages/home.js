@@ -7,6 +7,7 @@ import Post from "../components/Post";
 import Profile from "../components/Profile";
 
 import { getPosts } from "../redux/actions/dataActions";
+import PostaPost from "../components/PostaPost";
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
@@ -32,8 +33,8 @@ const Home = () => {
     <div>
       {authenticated ? (
         <Grid container spacing={4}>
-          <Grid item sm={8} xs={12}>
-            <p>Post to the conversation!</p>
+          <Grid item md={8} sm={8} xs={12}>
+            <PostaPost />
           </Grid>
           <Grid item md={8} sm={8} xs={12}>
             {recentPostsMarkup}

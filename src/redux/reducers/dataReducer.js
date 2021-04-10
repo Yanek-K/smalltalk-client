@@ -4,6 +4,7 @@ import {
   LIKE_POST,
   UNLIKE_POST,
   DELETE_POST,
+  SEND_POST,
 } from "../types";
 
 const initialState = {
@@ -44,6 +45,11 @@ export const dataReducer = (state = initialState, action) => {
       state.posts.splice(number, 1);
       return {
         ...state,
+      };
+    case SEND_POST:
+      return {
+        ...state,
+        posts: [action.payload, ...state.posts],
       };
     default:
       return state;

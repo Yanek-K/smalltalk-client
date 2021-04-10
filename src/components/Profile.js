@@ -34,7 +34,6 @@ const styles = (theme) => ({
     marginTop: 20,
     marginLeft: 20,
   },
-  profile: {},
   imageWrapper: {
     textAlign: "center",
     position: "relative",

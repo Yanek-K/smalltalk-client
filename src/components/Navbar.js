@@ -11,6 +11,7 @@ import Logo from "../images/LogoMain.png";
 
 //Redux
 import { logoutUser } from "../redux/actions/userActions";
+import PostaPost from "./PostaPost";
 
 const styles = {
   navbar: {

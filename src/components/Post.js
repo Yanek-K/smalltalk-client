@@ -132,11 +132,15 @@ const Post = ({
         <Typography variant="body1">{body}</Typography>
         <div className={classes.postInfo}>
           {likeButton}
-          <span className={classes.info}>{likeCount} Likes</span>
+          <span className={classes.info}>
+            {likeCount} {likeCount === 1 ? "Like" : "Likes"}
+          </span>
           <MyButton tip="comments">
             <ChatIcon color="primary" />
           </MyButton>
-          <span className={classes.info}>{commentCount} Comments</span>
+          <span className={classes.info}>
+            {commentCount} {commentCount === 1 ? "Comment" : "Comments"}
+          </span>
         </div>
       </CardContent>
     </Card>
