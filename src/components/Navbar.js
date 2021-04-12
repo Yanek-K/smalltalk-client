@@ -64,7 +64,7 @@ const styles = (theme) => ({
   },
   burgerMenu: {
     marginBottom: 50,
-    marginRight: -35,
+    marginRight: -100,
     cursor: "pointer",
   },
   burgerItems: {

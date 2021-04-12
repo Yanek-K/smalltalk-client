@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
-import { likePost, unlikePost } from "../redux/actions/dataActions";
+
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
@@ -18,7 +18,7 @@ import Typography from "@material-ui/core/Typography";
 //Icons
 import ChatIcon from "@material-ui/icons/Chat";
 import MyButton from "../util/MyButton";
-import { Favorite, FavoriteBorder } from "@material-ui/icons";
+import LikeButton from "./LikeButton";
 
 const styles = {
   card: {
@@ -74,37 +74,6 @@ const Post = ({
     },
   } = useSelector(mapState);
   const dispatch = useDispatch();
-  const likedPost = () => {
-    if (user.likes && user.likes.find((like) => like.postId === postId)) {
-      return true;
-    } else return false;
-  };
-
-  console.log(likeCount);
-
-  const likeAPost = () => {
-    dispatch(likePost(postId));
-  };
-
-  const unlikeAPost = () => {
-    dispatch(unlikePost(postId));
-  };
-
-  const likeButton = !authenticated ? (
-    <MyButton tip="Like">
-      <Link to="/login">
-        <FavoriteBorder color="primary" />
-      </Link>
-    </MyButton>
-  ) : likedPost() ? (
-    <MyButton tip="Undo like" onClick={unlikeAPost}>
-      <Favorite color="primary" />
-    </MyButton>
-  ) : (
-    <MyButton tip="Like" onClick={likeAPost}>
-      <FavoriteBorder color="primary" />
-    </MyButton>
-  );
 
   const deleteButton =
     authenticated && userHandle === handle ? (
@@ -133,7 +102,7 @@ const Post = ({
         </Typography>
         <Typography variant="body1">{body}</Typography>
         <div className={classes.postInfo}>
-          {likeButton}
+          <LikeButton postId={postId} />
           <span className={classes.info}>
             {likeCount} {likeCount === 1 ? "Like" : "Likes"}
           </span>

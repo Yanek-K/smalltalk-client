@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgresss from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
 
-const styles = {
+const styles = (theme) => ({
   card: {
     margin: "10px 0px 0px",
   },
@@ -29,7 +29,9 @@ const styles = {
   openButton: {
     margin: "0 0px -20px",
     alignSelf: "center",
-    // float: "right",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 0 -50px",
+    },
   },
   submitButton: {
     margin: "15px 5px 10px 0px",
@@ -43,7 +45,7 @@ const styles = {
   progressSpinner: {
     position: "absolute",
   },
-};
+});
 
 const mapState = (state) => ({
   loading: state.UI.loading,

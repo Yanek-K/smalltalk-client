@@ -6,6 +6,8 @@ import { likePost, unlikePost } from "../redux/actions/dataActions";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
+import LikeButton from "./LikeButton";
+
 //Redux
 import { getPost } from "../redux/actions/dataActions";
 
@@ -21,12 +23,19 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import MyButton from "../util/MyButton";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
+import ChatIcon from "@material-ui/icons/Chat";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
   seperator: {
     border: "none",
-    margin: 4,
+    marginTop: -2,
+    // marginBottom: 20,
+  },
+  seperatorBody: {
+    border: "none",
+    marginTop: 5,
+    // marginBottom: 20,
   },
   profileImage: {
     maxWidth: 200,
@@ -40,6 +49,26 @@ const styles = (theme) => ({
   closeButton: {
     position: "absolute",
     left: "90%",
+  },
+  expandButton: {
+    // position: "absolute",
+    // right: 0,
+    // marginRight: "20px",
+    // top: "65%",
+  },
+  spinner: {
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  postInfo: {
+    display: "flex",
+    alignItems: "center",
+    margin: "10px -10px 10px -12px",
+  },
+  info: {
+    marginLeft: -5,
+    marginRight: 10,
   },
 });
 
@@ -70,7 +99,9 @@ const PostDialog = ({ classes, postId, userHandle }) => {
   };
 
   const dialogMarkup = loading ? (
-    <CircularProgress size={200} />
+    <div className={classes.spinner}>
+      <CircularProgress size={200} thickness={2} />
+    </div>
   ) : (
     <Grid container spacing={16}>
       <Grid item sm={5}>
@@ -93,8 +124,20 @@ const PostDialog = ({ classes, postId, userHandle }) => {
         <Typography variant="body2" color="textSecondary">
           {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
         </Typography>
-        <hr className={classes.seperator} />
+        <hr className={classes.seperatorBody} />
         <Typography variant="body1">{body}</Typography>
+        <div className={classes.postInfo}>
+          <LikeButton postId={postId} />
+          <span className={classes.info}>
+            {likeCount} {likeCount === 1 ? "Like" : "Likes"}
+          </span>
+          <MyButton tip="comments">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span className={classes.info}>
+            {commentCount} {commentCount === 1 ? "Comment" : "Comments"}
+          </span>
+        </div>
       </Grid>
     </Grid>
   );
