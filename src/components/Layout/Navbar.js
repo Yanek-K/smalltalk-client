@@ -7,11 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo from "../images/LogoMain.png";
+import Logo from "../../images/LogoMain.png";
 
 //Redux
-import { logoutUser } from "../redux/actions/userActions";
-import { openSide } from "../redux/actions/navActions";
+import { logoutUser } from "../../redux/actions/userActions";
+import { openSide } from "../../redux/actions/navActions";
 
 const styles = (theme) => ({
   navbar: {

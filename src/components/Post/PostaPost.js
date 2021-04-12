@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import MyButton from "../util/MyButton";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import { clearErrors, sendAPost } from "../redux/actions/dataActions";
+import { clearErrors, sendAPost } from "../../redux/actions/dataActions";
 
 //MUI card styles
 import Card from "@material-ui/core/Card";

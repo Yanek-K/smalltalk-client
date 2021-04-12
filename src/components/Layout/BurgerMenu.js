@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Button from "@material-ui/core/Button";
 
-import { logoutUser } from "../redux/actions/userActions";
-import { closeSide } from "../redux/actions/navActions";
+import { logoutUser } from "../../redux/actions/userActions";
+import { closeSide } from "../../redux/actions/navActions";
 
 const mapState = (state) => ({
   open: state.nav.open,

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { deletePost } from "../redux/actions/dataActions";
-import MyButton from "../util/MyButton";
+import { deletePost } from "../../redux/actions/dataActions";
+import MyButton from "../../util/MyButton";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 //Redux
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 import { useSelector, useDispatch } from "react-redux";
 
 //MUI

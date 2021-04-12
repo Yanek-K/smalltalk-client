@@ -17,7 +17,7 @@ import Typography from "@material-ui/core/Typography";
 
 //Icons
 import ChatIcon from "@material-ui/icons/Chat";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import LikeButton from "./LikeButton";
 
 const styles = {

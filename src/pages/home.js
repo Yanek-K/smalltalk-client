@@ -3,12 +3,12 @@ import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
-import Post from "../components/Post";
-import Profile from "../components/Profile";
+import Post from "../components/Post/Post";
+import Profile from "../components/Profile/Profile.js";
 
 import { getPosts } from "../redux/actions/dataActions";
-import PostaPost from "../components/PostaPost";
-import BurgerMenu from "../components/BurgerMenu";
+import PostaPost from "../components/Post/PostaPost";
+import BurgerMenu from "../components/Layout/BurgerMenu";
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,

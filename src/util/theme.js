@@ -47,5 +47,15 @@ export const themeFile = {
       color: "#679944",
       marginLeft: 1,
     },
+    seperator: {
+      border: "none",
+      marginTop: -2,
+      // marginBottom: 20,
+    },
+    visibleSeperator: {
+      width: "100%",
+      borderBottom: "1px solid rgba(0,0,0,0.1)",
+      marginBottom: "20px",
+    },
   },
 };

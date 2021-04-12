@@ -1,10 +1,10 @@
 import React from "react";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import { Link } from "react-router-dom";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { likePost, unlikePost } from "../redux/actions/dataActions";
+import { likePost, unlikePost } from "../../redux/actions/dataActions";
 
 //MUI
 import { Favorite, FavoriteBorder } from "@material-ui/icons";

@@ -2,14 +2,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
-import { likePost, unlikePost } from "../redux/actions/dataActions";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import LikeButton from "./LikeButton";
+import Comments from "./Comments";
 
 //Redux
-import { getPost } from "../redux/actions/dataActions";
+import { getPost } from "../../redux/actions/dataActions";
 
 //MUI STUFF
 import Dialog from "@material-ui/core/Dialog";
@@ -21,17 +21,13 @@ import Typography from "@material-ui/core/Typography";
 
 //MUI Icons
 import CloseIcon from "@material-ui/icons/Close";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
-  seperator: {
-    border: "none",
-    marginTop: -2,
-    // marginBottom: 20,
-  },
+
   seperatorBody: {
     border: "none",
     marginTop: 5,
@@ -80,7 +76,7 @@ const mapState = (state) => ({
 const PostDialog = ({ classes, postId, userHandle }) => {
   const {
     post,
-    post: { body, createdAt, likeCount, commentCount, userImage },
+    post: { body, createdAt, likeCount, commentCount, userImage, comments },
     UI,
     UI: { loading },
   } = useSelector(mapState);
@@ -139,6 +135,9 @@ const PostDialog = ({ classes, postId, userHandle }) => {
           </span>
         </div>
       </Grid>
+
+      <hr className={classes.visibleSeperator} />
+      <Comments comments={comments} />
     </Grid>
   );
 
