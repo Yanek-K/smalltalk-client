@@ -5,6 +5,7 @@ import {
   UNLIKE_POST,
   DELETE_POST,
   SEND_POST,
+  SET_POST,
 } from "../types";
 
 const initialState = {
@@ -50,6 +51,11 @@ export const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: [action.payload, ...state.posts],
+      };
+    case SET_POST:
+      return {
+        ...state,
+        post: action.payload,
       };
     default:
       return state;

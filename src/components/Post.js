@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import DeletePost from "./DeletePost";
+import PostDialog from "./PostDialog";
 
 //MUI card styles
 import Card from "@material-ui/core/Card";
@@ -142,6 +143,7 @@ const Post = ({
           <span className={classes.info}>
             {commentCount} {commentCount === 1 ? "Comment" : "Comments"}
           </span>
+          <PostDialog postId={postId} userHandle={userHandle} />
         </div>
       </CardContent>
     </Card>
