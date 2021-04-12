@@ -20,10 +20,7 @@ const styles = (theme) => ({
   },
 });
 
-const mapState = (state) => {};
-
 const Comments = ({ classes, comments }) => {
-  const {} = useSelector;
   return (
     <Grid container>
       {comments.map((comment, index) => {
@@ -50,7 +47,7 @@ const Comments = ({ classes, comments }) => {
                       {userHandle}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
-                      {dayjs(createdAt.format("h:mm a, MMMM DD YYYY"))}
+                      {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
                     </Typography>
                     <hr className={classes.seperator} />
                     <Typography variant="body1">{body}</Typography>

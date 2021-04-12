@@ -6,6 +6,7 @@ import {
   DELETE_POST,
   SEND_POST,
   SET_POST,
+  SUBMIT_COMMENT,
 } from "../types";
 
 const initialState = {
@@ -34,7 +35,7 @@ export const dataReducer = (state = initialState, action) => {
       );
       state.posts[index] = action.payload;
       if (state.post.postId === action.payload.postId) {
-        state.post = action.payload;
+        state.post.likeCount = action.payload.likeCount;
       }
       return {
         ...state,
@@ -56,6 +57,22 @@ export const dataReducer = (state = initialState, action) => {
       return {
         ...state,
         post: action.payload,
+      };
+    case SUBMIT_COMMENT:
+      // let num = state.posts.findIndex(
+      //   (post) => post.postId === action.payload.postId
+      // );
+      // state.posts[num] = action.payload;
+      // if (state.post.postId === action.payload.postId) {
+      //   state.post.commentCount = action.payload.commentCount;
+      // }
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          commentCount: state.post.commentCount + 1,
+          comments: [{ ...action.payload }, ...state.post.comments],
+        },
       };
     default:
       return state;

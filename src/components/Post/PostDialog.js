@@ -7,9 +7,10 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 //Redux
-import { getPost } from "../../redux/actions/dataActions";
+import { getPost, clearErrors } from "../../redux/actions/dataActions";
 
 //MUI STUFF
 import Dialog from "@material-ui/core/Dialog";
@@ -92,6 +93,7 @@ const PostDialog = ({ classes, postId, userHandle }) => {
 
   const handleClose = () => {
     setOpen(false);
+    dispatch(clearErrors());
   };
 
   const dialogMarkup = loading ? (
@@ -135,8 +137,7 @@ const PostDialog = ({ classes, postId, userHandle }) => {
           </span>
         </div>
       </Grid>
-
-      <hr className={classes.visibleSeperator} />
+      <CommentForm postId={postId} />
       <Comments comments={comments} />
     </Grid>
   );

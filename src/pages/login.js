@@ -34,6 +34,9 @@ const styles = (theme) => ({
   },
   textField: {
     margin: "10px auto 10px auto",
+    [theme.breakpoints.down("sm")]: {
+      width: "65%",
+    },
     [theme.breakpoints.down("xs")]: {
       width: "65%",
     },
@@ -41,6 +44,7 @@ const styles = (theme) => ({
   button: {
     marginTop: 35,
     marginBottom: 20,
+    width: "45%",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
       width: "45%",

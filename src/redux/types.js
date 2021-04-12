@@ -18,6 +18,7 @@ export const LIKE_POST = "LIKE_POST";
 export const UNLIKE_POST = "UNLIKE_POST";
 export const DELETE_POST = "DElETE_POST";
 export const SEND_POST = "SEND_POST";
+export const SUBMIT_COMMENT = "SUBMIT_COMMENT";
 
 //NavBar
 export const IS_OPEN = "IS_OPEN";

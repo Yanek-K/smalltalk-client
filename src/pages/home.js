@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, []);
 
   let recentPostsMarkup = posts ? (
     posts.map((post) => <Post post={post} key={post.postId} />)
