@@ -1,19 +1,20 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
-import Notifications from "./Notifications";
 
 // Material UI
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo from "../../images/LogoMain.png";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 //Redux
 import { logoutUser } from "../../redux/actions/userActions";
 import { openSide } from "../../redux/actions/navActions";
+
+//Components
+import Notifications from "./Notifications";
+import Logo from "../../images/LogoMain.png";
 
 const styles = (theme) => ({
   navbar: {
@@ -29,10 +30,6 @@ const styles = (theme) => ({
       paddingLeft: 0,
       justifyContent: "space-evenly",
     },
-    [theme.breakpoints.down("xs")]: {
-      display: "flex",
-      justifyContent: "space-evenly",
-    },
   },
   logo: {
     width: "7rem",
@@ -42,10 +39,16 @@ const styles = (theme) => ({
       marginRight: "0px",
       marginLeft: "-80px",
     },
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "0px",
+    },
   },
 
   navBarButtons: {
     display: "inline-block",
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
   },
   authUser: {
     display: "flex",
@@ -60,9 +63,6 @@ const styles = (theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginRight: "0.9rem",
     },
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-    },
   },
   burgerMenu: {
     marginBottom: 50,
@@ -72,7 +72,7 @@ const styles = (theme) => ({
   burgerItems: {
     color: "#314455",
     [theme.breakpoints.down("xs")]: {
-      display: "block",
+      display: "none",
       color: "white",
       // maxHeight: "1%",
       marginBottom: -34,

@@ -59,13 +59,6 @@ export const dataReducer = (state = initialState, action) => {
         post: action.payload,
       };
     case SUBMIT_COMMENT:
-      // let num = state.posts.findIndex(
-      //   (post) => post.postId === action.payload.postId
-      // );
-      // state.posts[num] = action.payload;
-      // if (state.post.postId === action.payload.postId) {
-      //   state.post.commentCount = action.payload.commentCount;
-      // }
       return {
         ...state,
         post: {

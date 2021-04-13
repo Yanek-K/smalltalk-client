@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import React from "react";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
@@ -7,6 +6,7 @@ import { Link } from "react-router-dom";
 import MuiLink from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 //MUI ICONS
 import LocationOn from "@material-ui/icons/LocationOn";

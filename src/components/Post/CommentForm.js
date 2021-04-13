@@ -1,18 +1,24 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
+import React, { useEffect, useState } from "react";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
+import { submitComment } from "../../redux/actions/dataActions";
 
 //MUI
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import { submitComment } from "../../redux/actions/dataActions";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
+  button: {
+    marginTop: 5,
+    marginBottom: 30,
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: 50,
+    },
+  },
 });
 
 const mapState = (state) => ({
@@ -45,10 +51,10 @@ const CommentForm = ({ classes, postId }) => {
       setErrors("");
       setComment("");
     }
-  }, [UI.errors]);
+  }, [UI.errors, loading]);
 
   const commentFormMarkup = authenticated ? (
-    <Grid item sm={12} styles={{ textAlign: "center" }}>
+    <Grid item sm={12} xs={12} styles={{ textAlign: "center" }}>
       <form onSubmit={handleSubmit}>
         <TextField
           name="body"

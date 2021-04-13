@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect, useState } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import React, { Fragment, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 //Redux
 import { editUserDetails } from "../../redux/actions/userActions";
-import { useSelector, useDispatch } from "react-redux";
 
 //MUI
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 //MUI Icons
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";

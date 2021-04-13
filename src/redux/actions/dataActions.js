@@ -126,6 +126,7 @@ export const sendAPost = (newPost) => (dispatch) => {
     });
 };
 
+//Get User Data
 export const getUserData = (userHandle) => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   axios
@@ -144,6 +145,7 @@ export const getUserData = (userHandle) => (dispatch) => {
     });
 };
 
+//Clear Errors
 export const clearErrors = () => (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
 };

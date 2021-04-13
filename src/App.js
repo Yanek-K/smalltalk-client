@@ -1,9 +1,10 @@
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import "./App.css";
+
+//MUI
 import { ThemeProvider as MUIThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-import { themeFile } from "./util/theme";
-import jwtDecode from "jwt-decode";
 
 // Redux
 import { Provider } from "react-redux";
@@ -21,6 +22,7 @@ import User from "./pages/user";
 import Navbar from "./components/Layout/Navbar";
 import AuthRoute from "./util/AuthRoute";
 import axios from "axios";
+import { themeFile } from "./util/theme";
 
 const theme = createMuiTheme(themeFile);
 

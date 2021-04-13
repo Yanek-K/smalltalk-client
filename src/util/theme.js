@@ -50,7 +50,6 @@ export const themeFile = {
     seperator: {
       border: "none",
       marginTop: -2,
-      // marginBottom: 20,
     },
     visibleSeperator: {
       width: "100%",

@@ -1,12 +1,17 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
 
+// MUI
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
 
+//Redux
 import { logoutUser } from "../../redux/actions/userActions";
 import { closeSide } from "../../redux/actions/navActions";
+
+//Components
+import Notifications from "./Notifications";
 
 const mapState = (state) => ({
   open: state.nav.open,
@@ -51,14 +56,7 @@ const BurgerMenu = ({ classes }) => {
             >
               Home
             </Button>
-            <Button
-              color="inherit"
-              component={Link}
-              to="/"
-              className={classes.button}
-            >
-              Notifications
-            </Button>
+
             <Button
               color="inherit"
               onClick={() => dispatch(logoutUser())}
@@ -66,6 +64,7 @@ const BurgerMenu = ({ classes }) => {
             >
               Logout
             </Button>
+            <Notifications />
             <Button
               color="inherit"
               onClick={() => dispatch(closeSide())}

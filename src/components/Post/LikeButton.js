@@ -1,5 +1,4 @@
 import React from "react";
-import MyButton from "../../util/MyButton";
 import { Link } from "react-router-dom";
 
 //Redux
@@ -8,6 +7,9 @@ import { likePost, unlikePost } from "../../redux/actions/dataActions";
 
 //MUI
 import { Favorite, FavoriteBorder } from "@material-ui/icons";
+
+//Components
+import MyButton from "../../util/MyButton";
 
 const mapState = (state) => ({
   user: state.user,

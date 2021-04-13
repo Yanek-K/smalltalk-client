@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
-import withStyles from "@material-ui/core/styles/withStyles";
 
+//Redux
 import { clearErrors, sendAPost } from "../../redux/actions/dataActions";
 
-//MUI card styles
+//MUI
+import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-
-//MUI
-import Button from "@material-ui/core/Button";
 import CircularProgresss from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const styles = (theme) => ({
   card: {
@@ -87,7 +83,6 @@ const PostaPost = ({ classes }) => {
           variant="contained"
           color="secondary"
           className={classes.openButton}
-          // disabled={loading}
           onClick={(e) => setOpen(true)}
         >
           +

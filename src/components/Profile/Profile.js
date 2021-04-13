@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
-import EditDetails from "./EditDetails";
 
 //MUI
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -17,11 +16,13 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import Edit from "@material-ui/icons/Edit";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, uploadImage } from "../../redux/actions/userActions";
+import { uploadImage } from "../../redux/actions/userActions";
+
+//Components
+import EditDetails from "./EditDetails";
 
 const mapState = (state) => ({
   user: state.user,
@@ -88,7 +89,6 @@ const styles = (theme) => ({
 const Profile = ({ classes }) => {
   const dispatch = useDispatch();
   const { user, authenticated } = useSelector(mapState);
-  console.log(user);
   const {
     credentials: { handle, createdAt, imageUrl, bio, website, location },
     loading,

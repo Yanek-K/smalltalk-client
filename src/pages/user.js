@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useRouteMatch } from "react-router-dom";
-import StaticProfile from "../components/Profile/StaticProfile";
-
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import Post from "../components/Post/Post";
 
-import Grid from "@material-ui/core/Grid";
+//Redux
 import { getUserData } from "../redux/actions/dataActions";
+
+//MUI
+import Grid from "@material-ui/core/Grid";
+
+//Components
+import Post from "../components/Post/Post";
+import StaticProfile from "../components/Profile/StaticProfile";
 
 const mapState = (state) => ({
   data: state.data,
@@ -56,7 +60,7 @@ const User = () => {
 
   return (
     <Grid container spacing={16}>
-      <Grid item md={8} sm={12} xs={1}>
+      <Grid item md={8} sm={12} xs={12}>
         {postsMarkup}
       </Grid>
       <Grid item md={4} sm={12} xs={12}>

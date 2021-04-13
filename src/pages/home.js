@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
-import Grid from "@material-ui/core/Grid";
-import axios from "axios";
-
 import { useDispatch, useSelector } from "react-redux";
-import Post from "../components/Post/Post";
-import Profile from "../components/Profile/Profile.js";
 
+//MUI
+import Grid from "@material-ui/core/Grid";
+
+//Redux
 import { getPosts } from "../redux/actions/dataActions";
+
+//Components
 import PostaPost from "../components/Post/PostaPost";
 import BurgerMenu from "../components/Layout/BurgerMenu";
+import Post from "../components/Post/Post";
+import Profile from "../components/Profile/Profile.js";
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
@@ -22,7 +25,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [dispatch]);
 
   let recentPostsMarkup = posts ? (
     posts.map((post) => <Post post={post} key={post.postId} />)

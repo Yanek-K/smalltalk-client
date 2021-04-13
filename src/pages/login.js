@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import AppIcon from "../images/LogoNoBack.png";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import AppIcon from "../images/LogoNoBack.png";
 
 //Material UI
 import Grid from "@material-ui/core/Grid";
@@ -9,10 +9,10 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 // Redux
 import { loginUser } from "../redux/actions/userActions";
-import { useDispatch, useSelector } from "react-redux";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -66,9 +66,6 @@ const Login = ({ classes }) => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const loading = UI.loading;
-
-  //  EDIT THIS WHEN ACTION IS CREATED
-  // const errors = UI.errors
 
   const handleSubmit = (e) => {
     e.preventDefault();

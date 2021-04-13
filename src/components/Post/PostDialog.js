@@ -1,30 +1,29 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-
-import LikeButton from "./LikeButton";
-import Comments from "./Comments";
-import CommentForm from "./CommentForm";
 
 //Redux
 import { getPost, clearErrors } from "../../redux/actions/dataActions";
 
-//MUI STUFF
+//MUI
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 //MUI Icons
 import CloseIcon from "@material-ui/icons/Close";
-import MyButton from "../../util/MyButton";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
+
+//Components
+import MyButton from "../../util/MyButton";
+import LikeButton from "./LikeButton";
+import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 const styles = (theme) => ({
   ...theme.spreadThis,
@@ -32,13 +31,17 @@ const styles = (theme) => ({
   seperatorBody: {
     border: "none",
     marginTop: 5,
-    // marginBottom: 20,
   },
   profileImage: {
     maxWidth: 200,
     height: 200,
     borderRadius: "50%",
     objectFit: "cover",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: 150,
+      height: 150,
+      marginRight: 20,
+    },
   },
   dialogContent: {
     padding: 20,
@@ -46,12 +49,6 @@ const styles = (theme) => ({
   closeButton: {
     position: "absolute",
     left: "90%",
-  },
-  expandButton: {
-    // position: "absolute",
-    // right: 0,
-    // marginRight: "20px",
-    // top: "65%",
   },
   spinner: {
     textAlign: "center",
@@ -76,9 +73,7 @@ const mapState = (state) => ({
 
 const PostDialog = ({ classes, postId, userHandle, openDialog }) => {
   const {
-    post,
     post: { body, createdAt, likeCount, commentCount, userImage, comments },
-    UI,
     UI: { loading },
   } = useSelector(mapState);
 
@@ -92,7 +87,7 @@ const PostDialog = ({ classes, postId, userHandle, openDialog }) => {
     window.history.pushState(null, null, newPath);
     setOpen(true);
     dispatch(getPost(postId));
-  }, [dispatch, postId]);
+  }, [dispatch, postId, newPath]);
 
   const handleClose = () => {
     window.history.pushState(null, null, oldPath);
@@ -117,11 +112,7 @@ const PostDialog = ({ classes, postId, userHandle, openDialog }) => {
   ) : (
     <Grid container spacing={16}>
       <Grid item sm={5}>
-        <img
-          src={userImage}
-          alt="Profile Image"
-          className={classes.profileImage}
-        />
+        <img src={userImage} alt="Profile" className={classes.profileImage} />
       </Grid>
       <Grid item sm={7}>
         <Typography

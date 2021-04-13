@@ -1,7 +1,8 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+//Redux
 import { markNotificationsRead } from "../../redux/actions/userActions";
 
 // MUI

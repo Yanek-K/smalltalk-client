@@ -9,6 +9,7 @@ import {
   MARK_NOTIFICATIONS_READ,
 } from "./../types";
 
+//Log User In
 export const loginUser = (userData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
@@ -27,6 +28,7 @@ export const loginUser = (userData, history) => (dispatch) => {
     });
 };
 
+//Get User Data
 export const getUserData = () => (dispatch) => {
   dispatch({ type: LOADING_USER });
   axios
@@ -42,6 +44,7 @@ export const getUserData = () => (dispatch) => {
     });
 };
 
+//Sign User Up
 export const signupUser = (newUserData, history) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
@@ -60,6 +63,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
     });
 };
 
+//Log User Out
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem("FBIdToken");
   delete axios.defaults.headers.common["Authorization"];
@@ -72,6 +76,7 @@ const setAuthorizationHeader = (token) => {
   axios.defaults.headers.common["Authorization"] = FBIdToken;
 };
 
+//Upload Image
 export const uploadImage = (formData) => (dispatch) => {
   dispatch({ type: LOADING_USER });
   axios
@@ -82,6 +87,7 @@ export const uploadImage = (formData) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+//Edit Details
 export const editUserDetails = (userDetails) => (dispatch) => {
   dispatch({ type: LOADING_USER });
   axios
@@ -92,6 +98,7 @@ export const editUserDetails = (userDetails) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+//Notifications
 export const markNotificationsRead = (notificationIds) => (dispatch) => {
   axios
     .post("/notifications", notificationIds)

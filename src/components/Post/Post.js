@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { useSelector, useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import DeletePost from "./DeletePost";
-import PostDialog from "./PostDialog";
-
-//MUI card styles
+//MUI
+import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -19,6 +15,10 @@ import Typography from "@material-ui/core/Typography";
 import ChatIcon from "@material-ui/icons/Chat";
 import MyButton from "../../util/MyButton";
 import LikeButton from "./LikeButton";
+
+//Components
+import DeletePost from "./DeletePost";
+import PostDialog from "./PostDialog";
 
 const styles = {
   card: {
@@ -68,13 +68,11 @@ const Post = ({
   openDialog,
 }) => {
   const {
-    user,
     user: {
       authenticated,
       credentials: { handle },
     },
   } = useSelector(mapState);
-  const dispatch = useDispatch();
 
   const deleteButton =
     authenticated && userHandle === handle ? (
