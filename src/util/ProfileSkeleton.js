@@ -5,11 +5,6 @@ import noImage from "../images/noImage.png";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Paper from "@material-ui/core/Paper";
 
-//Icons
-import LocationOn from "@material-ui/icons/LocationOn";
-import LinkIcon from "@material-ui/icons/Link";
-import CalendarToday from "@material-ui/icons/CalendarToday";
-
 const styles = (theme) => ({
   ...theme.spreadThis,
   imageWrapper: {
