@@ -14,51 +14,7 @@ import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 
 const styles = (theme) => ({
-  paper: {
-    padding: 20,
-    marginTop: 20,
-    marginLeft: 20,
-  },
-  imageWrapper: {
-    textAlign: "center",
-    position: "relative",
-    marginBottom: "-25px",
-  },
-
-  profileImage: {
-    width: 150,
-    height: 150,
-    objectFit: "cover",
-    maxWidth: "100%",
-    borderRadius: "50%",
-  },
-  profileDetails: {
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "50px",
-  },
-
-  bioDetails: {
-    display: "flex",
-    justifyItems: "center",
-    paddingTop: "10px",
-    color: "black",
-  },
-
-  line: {
-    border: "none",
-    margin: "0 0 10px 0",
-  },
-
-  text: {
-    paddingLeft: 15,
-  },
-  details: {
-    display: "flex",
-    marginTop: "10px",
-  },
+  ...theme.spreadThis,
 });
 
 const StaticProfile = ({ profile, classes }) => {

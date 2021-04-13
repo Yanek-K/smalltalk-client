@@ -56,5 +56,88 @@ export const themeFile = {
       borderBottom: "1px solid rgba(0,0,0,0.1)",
       marginBottom: "20px",
     },
+    card: {
+      display: "flex",
+      marginBottom: 20,
+      marginTop: 15,
+    },
+    cardContent: {
+      width: "100%",
+      flexDirection: "column",
+      padding: 25,
+    },
+    cover: {
+      minWidth: 110,
+      objectFit: "cover",
+    },
+    handle: {
+      width: 60,
+      height: 20,
+      backgroundColor: "#314455",
+      marginBottom: 7,
+    },
+    date: {
+      height: 12,
+      width: 100,
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+      marginBottom: 10,
+    },
+    fullLine: {
+      height: 10,
+      width: "50%",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      marginBottom: 10,
+    },
+    halfLine: {
+      height: 10,
+      width: "70%",
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+      marginBottom: 10,
+    },
+    paper: {
+      padding: 20,
+      marginTop: 20,
+      marginLeft: 20,
+    },
+    imageWrapper: {
+      textAlign: "center",
+      position: "relative",
+      marginBottom: "-25px",
+    },
+
+    profileImage: {
+      width: 150,
+      height: 150,
+      objectFit: "cover",
+      maxWidth: "100%",
+      borderRadius: "50%",
+    },
+    profileDetails: {
+      textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      marginTop: "50px",
+    },
+
+    bioDetails: {
+      display: "flex",
+      justifyItems: "center",
+      paddingTop: "10px",
+      color: "black",
+    },
+
+    line: {
+      border: "none",
+      margin: "0 0 10px 0",
+    },
+
+    text: {
+      paddingLeft: 15,
+    },
+    details: {
+      display: "flex",
+      marginTop: "10px",
+    },
   },
 };

@@ -9,9 +9,9 @@ import { getPosts } from "../redux/actions/dataActions";
 
 //Components
 import PostaPost from "../components/Post/PostaPost";
-import BurgerMenu from "../components/Layout/BurgerMenu";
 import Post from "../components/Post/Post";
 import Profile from "../components/Profile/Profile.js";
+import PostSkeleton from "../util/PostSkeleton";
 
 const mapState = (state) => ({
   authenticated: state.user.authenticated,
@@ -21,16 +21,16 @@ const mapState = (state) => ({
 const Home = () => {
   const dispatch = useDispatch();
   const { authenticated, data } = useSelector(mapState);
-  const { posts } = data;
+  const { posts, loading } = data;
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  let recentPostsMarkup = posts ? (
+  let recentPostsMarkup = !loading ? (
     posts.map((post) => <Post post={post} key={post.postId} />)
   ) : (
-    <p>Loading...</p>
+    <PostSkeleton />
   );
 
   return (
@@ -39,9 +39,6 @@ const Home = () => {
         <Grid container spacing={4}>
           <Grid item md={8} sm={12} xs={1}>
             <PostaPost />
-          </Grid>
-          <Grid item xs={11}>
-            <BurgerMenu />
           </Grid>
           <Grid item md={8} sm={12} xs={12}>
             {recentPostsMarkup}

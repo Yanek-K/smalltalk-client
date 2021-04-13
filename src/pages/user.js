@@ -12,6 +12,8 @@ import Grid from "@material-ui/core/Grid";
 //Components
 import Post from "../components/Post/Post";
 import StaticProfile from "../components/Profile/StaticProfile";
+import ProfileSkeleton from "../util/ProfileSkeleton";
+import PostSkeleton from "../util/PostSkeleton";
 
 const mapState = (state) => ({
   data: state.data,
@@ -35,6 +37,7 @@ const User = () => {
   }, [postId]);
 
   useEffect(() => {
+    // const abortController = new AbortController();
     dispatch(getUserData(handle));
     axios
       .get(`/user/${handle}`)
@@ -42,10 +45,14 @@ const User = () => {
         setProfile(res.data.user);
       })
       .catch((err) => console.log(err));
+
+    // return () => {
+    //   abortController.abort();
+    // };
   }, [dispatch, handle]);
 
   const postsMarkup = loading ? (
-    <p>Loading Data...</p>
+    <PostSkeleton />
   ) : posts === null ? (
     <p>No posts from this user</p>
   ) : !postIdParam ? (
@@ -65,7 +72,7 @@ const User = () => {
       </Grid>
       <Grid item md={4} sm={12} xs={12}>
         {profile === null ? (
-          <p>Loading Data...</p>
+          <ProfileSkeleton />
         ) : (
           <StaticProfile profile={profile} />
         )}

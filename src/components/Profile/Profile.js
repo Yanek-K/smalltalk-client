@@ -23,6 +23,7 @@ import { uploadImage } from "../../redux/actions/userActions";
 
 //Components
 import EditDetails from "./EditDetails";
+import ProfileSkeleton from "../../util/ProfileSkeleton";
 
 const mapState = (state) => ({
   user: state.user,
@@ -197,7 +198,7 @@ const Profile = ({ classes }) => {
       </Paper>
     )
   ) : (
-    <p>Loading...</p>
+    <ProfileSkeleton />
   );
 
   return profileMarkup;
