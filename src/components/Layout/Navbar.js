@@ -24,6 +24,7 @@ const styles = (theme) => ({
     display: "flex",
     justifyContent: "space-evenly",
     height: "20px",
+    marginTop: "5px",
     [theme.breakpoints.down("sm")]: {
       display: "flex",
       marginLeft: 0,
@@ -32,15 +33,15 @@ const styles = (theme) => ({
     },
   },
   logo: {
-    width: "7rem",
-    marginLeft: "-70px",
+    width: "8.5rem",
+    marginLeft: "-200px",
     [theme.breakpoints.down("sm")]: {
-      width: "6.5rem",
+      width: "7.5rem",
       marginRight: "0px",
       marginLeft: "-80px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "0px",
+      marginLeft: "-40px",
     },
   },
 
