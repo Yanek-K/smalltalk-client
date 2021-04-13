@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useRouteMatch } from "react-router-dom";
 import StaticProfile from "../components/Profile/StaticProfile";
 
 import axios from "axios";
@@ -13,15 +13,22 @@ const mapState = (state) => ({
   data: state.data,
 });
 
-const User = ({}) => {
+const User = () => {
   const {
-    data,
     data: { posts, loading },
   } = useSelector(mapState);
   const dispatch = useDispatch();
 
   const [profile, setProfile] = useState(null);
+  const [postIdParam, setPostIdParam] = useState(null);
   const { handle } = useParams();
+  const { postId } = useParams();
+
+  useEffect(() => {
+    if (postId) {
+      setPostIdParam(postId);
+    }
+  }, [postId]);
 
   useEffect(() => {
     dispatch(getUserData(handle));
@@ -31,16 +38,20 @@ const User = ({}) => {
         setProfile(res.data.user);
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  console.log(profile);
+  }, [dispatch, handle]);
 
   const postsMarkup = loading ? (
     <p>Loading Data...</p>
   ) : posts === null ? (
     <p>No posts from this user</p>
-  ) : (
+  ) : !postIdParam ? (
     posts.map((post) => <Post key={post.postId} post={post} />)
+  ) : (
+    posts.map((post) => {
+      if (post.postId !== postIdParam)
+        return <Post key={post.postId} post={post} />;
+      else return <Post key={post.postId} post={post} openDialog />;
+    })
   );
 
   return (

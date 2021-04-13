@@ -2,12 +2,14 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
+import Notifications from "./Notifications";
 
 // Material UI
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Logo from "../../images/LogoMain.png";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 
 //Redux
 import { logoutUser } from "../../redux/actions/userActions";
@@ -43,7 +45,7 @@ const styles = (theme) => ({
   },
 
   navBarButtons: {
-    display: "flex",
+    display: "inline-block",
   },
   authUser: {
     display: "flex",
@@ -91,7 +93,9 @@ const Navbar = ({ classes }) => {
     <div className={classes.navBar}>
       <AppBar>
         <Toolbar className={classes.wrap}>
-          <img src={Logo} alt="logo" className={classes.logo} edge="start" />
+          <Link to="/">
+            <img src={Logo} alt="logo" className={classes.logo} edge="start" />
+          </Link>
           <div className="navBarButtons">
             {authenticated ? (
               <Fragment>
@@ -103,14 +107,7 @@ const Navbar = ({ classes }) => {
                 >
                   Home
                 </Button>
-                <Button
-                  color="inherit"
-                  component={Link}
-                  to="/"
-                  className={classes.button}
-                >
-                  Notifications
-                </Button>
+
                 <Button
                   color="inherit"
                   onClick={() => dispatch(logoutUser())}
@@ -118,6 +115,7 @@ const Navbar = ({ classes }) => {
                 >
                   Logout
                 </Button>
+                <Notifications />
               </Fragment>
             ) : (
               <Fragment>

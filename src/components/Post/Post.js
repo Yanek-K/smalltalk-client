@@ -65,6 +65,7 @@ const Post = ({
     likeCount,
     commentCount,
   },
+  openDialog,
 }) => {
   const {
     user,
@@ -112,7 +113,11 @@ const Post = ({
           <span className={classes.info}>
             {commentCount} {commentCount === 1 ? "Comment" : "Comments"}
           </span>
-          <PostDialog postId={postId} userHandle={userHandle} />
+          <PostDialog
+            postId={postId}
+            userHandle={userHandle}
+            openDialog={openDialog}
+          />
         </div>
       </CardContent>
     </Card>

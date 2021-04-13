@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { useSelector, useDispatch } from "react-redux";
@@ -74,7 +74,7 @@ const mapState = (state) => ({
   UI: state.UI,
 });
 
-const PostDialog = ({ classes, postId, userHandle }) => {
+const PostDialog = ({ classes, postId, userHandle, openDialog }) => {
   const {
     post,
     post: { body, createdAt, likeCount, commentCount, userImage, comments },
@@ -85,16 +85,30 @@ const PostDialog = ({ classes, postId, userHandle }) => {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
+  const [oldPath, setOldPath] = useState("");
+  const newPath = `/users/${userHandle}/post/${postId}`;
+  const handleOpen = useCallback(() => {
+    setOldPath(window.location.pathname);
+    window.history.pushState(null, null, newPath);
     setOpen(true);
     dispatch(getPost(postId));
-  };
+  }, [dispatch, postId]);
 
   const handleClose = () => {
+    window.history.pushState(null, null, oldPath);
+    if (oldPath === newPath) {
+      setOldPath(`/users/${userHandle}`);
+      console.log(oldPath);
+    }
     setOpen(false);
     dispatch(clearErrors());
   };
+
+  useEffect(() => {
+    if (openDialog) {
+      handleOpen();
+    }
+  }, [handleOpen, openDialog]);
 
   const dialogMarkup = loading ? (
     <div className={classes.spinner}>
