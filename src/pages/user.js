@@ -19,7 +19,7 @@ const mapState = (state) => ({
   data: state.data,
 });
 
-const User = () => {
+const User = ({ classes }) => {
   const {
     data: { posts, loading },
   } = useSelector(mapState);
@@ -37,7 +37,6 @@ const User = () => {
   }, [postId]);
 
   useEffect(() => {
-    // const abortController = new AbortController();
     dispatch(getUserData(handle));
     axios
       .get(`/user/${handle}`)
@@ -45,10 +44,6 @@ const User = () => {
         setProfile(res.data.user);
       })
       .catch((err) => console.log(err));
-
-    // return () => {
-    //   abortController.abort();
-    // };
   }, [dispatch, handle]);
 
   const postsMarkup = loading ? (
@@ -66,7 +61,7 @@ const User = () => {
   );
 
   return (
-    <Grid container spacing={16}>
+    <Grid container spacing={10}>
       <Grid item md={8} sm={12} xs={12}>
         {postsMarkup}
       </Grid>

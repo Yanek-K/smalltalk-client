@@ -39,6 +39,9 @@ if (token) {
   }
 }
 
+axios.defaults.baseURL =
+  "https://us-central1-smalltalk-fb951.cloudfunctions.net/api";
+
 function App() {
   return (
     <MUIThemeProvider theme={theme}>

@@ -19,35 +19,49 @@ const styles = (theme) => ({
 
   image: {
     margin: "80px auto 25px auto",
-    width: "25%",
-    [theme.breakpoints.down("xs")]: {
-      width: "20%",
-      marginTop: 30,
+    width: "12%",
+    [theme.breakpoints.up("md")]: {
+      width: "10%",
+      marginTop: 50,
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "40px",
     },
   },
   pageTitle: {
-    margin: "10px auto 20px auto",
+    margin: "15px auto 20px auto",
     fontFamily: "Baskervville",
+    fontSize: "27px",
     [theme.breakpoints.down("xs")]: {
       fontSize: "25px",
     },
   },
   textField: {
-    margin: "10px auto 10px auto",
-    [theme.breakpoints.down("sm")]: {
-      width: "65%",
-    },
+    margin: "10px auto 15px auto",
+    width: "55.2%",
+
     [theme.breakpoints.down("xs")]: {
       width: "65%",
     },
   },
+  submit: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "0 auto",
+    width: "60%",
+    [theme.breakpoints.down("sm")]: {
+      width: "65%",
+    },
+  },
   button: {
-    marginTop: 35,
+    marginTop: 45,
     marginBottom: 20,
-    width: "45%",
+    width: "30%",
+    marginLeft: "auto",
+    marginRight: "auto",
     position: "relative",
     [theme.breakpoints.down("sm")]: {
-      width: "45%",
+      width: "35%",
       marginBottom: 30,
     },
   },
@@ -90,48 +104,49 @@ const Login = ({ classes }) => {
         <Typography variant="h4" className={classes.pageTitle}>
           Login
         </Typography>
+
         <form noValidate onSubmit={handleSubmit}>
-          <TextField
-            id="email"
-            name="email"
-            type="email"
-            label="Email"
-            className={classes.textField}
-            helperText={errors.email}
-            error={errors.email ? true : false}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            fullWidth
-          />
-          <TextField
-            id="password"
-            name="password"
-            type="password"
-            label="Password"
-            className={classes.textField}
-            helperText={errors.password}
-            error={errors.password ? true : false}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-          />
-          {errors.general && (
-            <Typography variant="body2" className={classes.customError}>
-              {errors.general}
-            </Typography>
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            disabled={loading}
-          >
-            Submit
-            {loading && (
-              <CircularProgress size={20} className={classes.progress} />
+          <div className={classes.submit}>
+            <TextField
+              id="email"
+              name="email"
+              type="email"
+              label="Email"
+              className={classes.textField}
+              helperText={errors.email}
+              error={errors.email ? true : false}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              label="Password"
+              className={classes.textField}
+              helperText={errors.password}
+              error={errors.password ? true : false}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.general && (
+              <Typography variant="body2" className={classes.customError}>
+                {errors.general}
+              </Typography>
             )}
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              disabled={loading}
+            >
+              Submit
+              {loading && (
+                <CircularProgress size={20} className={classes.progress} />
+              )}
+            </Button>
+          </div>
           <br />
           <small>
             Not signed up yet? Sign up{" "}

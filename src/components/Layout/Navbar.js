@@ -34,19 +34,22 @@ const styles = (theme) => ({
   },
   logo: {
     width: "8.5rem",
-    marginLeft: "-200px",
+    marginLeft: "-170px",
     [theme.breakpoints.down("sm")]: {
       width: "7.5rem",
       marginRight: "0px",
-      marginLeft: "-80px",
+      marginLeft: "-90px",
     },
     [theme.breakpoints.down("xs")]: {
-      marginLeft: "-40px",
+      marginLeft: "-30px",
+      width: "6rem",
+      marginTop: 2,
     },
   },
 
   navBarButtons: {
-    display: "inline-block",
+    display: "flex",
+    paddingLeft: 20,
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
@@ -67,18 +70,17 @@ const styles = (theme) => ({
   },
   burgerMenu: {
     marginBottom: 50,
-    marginRight: -100,
+    marginRight: -75,
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: -30,
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginRight: 10,
+    },
   },
   burgerItems: {
     color: "#314455",
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-      color: "white",
-      // maxHeight: "1%",
-      marginBottom: -34,
-      fontSize: 30,
-    },
   },
 });
 

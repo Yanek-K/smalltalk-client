@@ -27,12 +27,6 @@ const Home = () => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  let recentPostsMarkup = !loading ? (
-    posts.map((post) => <Post post={post} key={post.postId} />)
-  ) : (
-    <PostSkeleton />
-  );
-
   return (
     <div>
       {authenticated ? (
@@ -41,7 +35,11 @@ const Home = () => {
             <PostaPost />
           </Grid>
           <Grid item md={8} sm={12} xs={12}>
-            {recentPostsMarkup}
+            {posts && !loading ? (
+              posts.map((post) => <Post post={post} key={post.postId} />)
+            ) : (
+              <PostSkeleton />
+            )}
           </Grid>
           <Grid item md={4} sm={12} xs={12}>
             <Profile />

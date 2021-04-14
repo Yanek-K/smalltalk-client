@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import dayjs from "dayjs";
 
 //MUI
@@ -24,6 +24,7 @@ import { uploadImage } from "../../redux/actions/userActions";
 //Components
 import EditDetails from "./EditDetails";
 import ProfileSkeleton from "../../util/ProfileSkeleton";
+import Login from "../../pages/login";
 
 const mapState = (state) => ({
   user: state.user,
@@ -88,6 +89,7 @@ const styles = (theme) => ({
 });
 
 const Profile = ({ classes }) => {
+  let history = useHistory();
   const dispatch = useDispatch();
   const { user, authenticated } = useSelector(mapState);
   const {
@@ -173,29 +175,30 @@ const Profile = ({ classes }) => {
         </div>
       </Paper>
     ) : (
-      <Paper className={classes.notLoggedIn}>
-        <Typography variant="body2" align="center">
-          No profile found, please login again
-        </Typography>
-        <div className={classes.buttons}>
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link}
-            to="/login"
-          >
-            Login
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            component={Link}
-            to="/login"
-          >
-            Sign Up
-          </Button>
-        </div>
-      </Paper>
+      <Login />
+      // <Paper className={classes.notLoggedIn}>
+      //   <Typography variant="body2" align="center">
+      //     No profile found, please login again
+      //   </Typography>
+      //   <div className={classes.buttons}>
+      //     <Button
+      //       variant="contained"
+      //       color="primary"
+      //       component={Link}
+      //       to="/login"
+      //     >
+      //       Login
+      //     </Button>
+      //     <Button
+      //       variant="contained"
+      //       color="secondary"
+      //       component={Link}
+      //       to="/login"
+      //     >
+      //       Sign Up
+      //     </Button>
+      //   </div>
+      // </Paper>
     )
   ) : (
     <ProfileSkeleton />
