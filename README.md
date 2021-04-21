@@ -1,4 +1,5 @@
 SmallTalk
+
 A chat app. Guests can log in, send messages to other users, update their profile information and add likes and comments.
 
 ## Table of contents
