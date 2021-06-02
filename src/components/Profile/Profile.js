@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 //MUI
@@ -89,7 +89,6 @@ const styles = (theme) => ({
 });
 
 const Profile = ({ classes }) => {
-  let history = useHistory();
   const dispatch = useDispatch();
   const { user, authenticated } = useSelector(mapState);
   const {
@@ -175,30 +174,30 @@ const Profile = ({ classes }) => {
         </div>
       </Paper>
     ) : (
-      <Login />
-      // <Paper className={classes.notLoggedIn}>
-      //   <Typography variant="body2" align="center">
-      //     No profile found, please login again
-      //   </Typography>
-      //   <div className={classes.buttons}>
-      //     <Button
-      //       variant="contained"
-      //       color="primary"
-      //       component={Link}
-      //       to="/login"
-      //     >
-      //       Login
-      //     </Button>
-      //     <Button
-      //       variant="contained"
-      //       color="secondary"
-      //       component={Link}
-      //       to="/login"
-      //     >
-      //       Sign Up
-      //     </Button>
-      //   </div>
-      // </Paper>
+      // <Login />
+      <Paper className={classes.notLoggedIn}>
+        <Typography variant="body2" align="center">
+          No profile found, please login again
+        </Typography>
+        <div className={classes.buttons}>
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/login"
+          >
+            Login
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            component={Link}
+            to="/login"
+          >
+            Sign Up
+          </Button>
+        </div>
+      </Paper>
     )
   ) : (
     <ProfileSkeleton />

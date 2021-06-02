@@ -44,6 +44,13 @@ const styles = (theme) => ({
       width: "65%",
     },
   },
+  guest: {
+    fontFamily: "Baskervville",
+    marginTop: "1rem",
+    lineHeight: "2rem",
+    letterSpacing: "0.04rem",
+    color: "#4c6e4c",
+  },
   submit: {
     display: "flex",
     flexDirection: "column",
@@ -147,6 +154,11 @@ const Login = ({ classes }) => {
               )}
             </Button>
           </div>
+          <p className={classes.guest}>
+            To login as guest, use: <br />
+            Email: guest123@mail.com <br />
+            Password: guest123
+          </p>
           <br />
           <small>
             Not signed up yet? Sign up{" "}

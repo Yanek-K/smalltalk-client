@@ -29,25 +29,25 @@ const Home = () => {
 
   return (
     <div>
-      {authenticated ? (
-        <Grid container spacing={4}>
-          <Grid item md={8} sm={12} xs={1}>
-            <PostaPost />
-          </Grid>
-          <Grid item md={8} sm={12} xs={12}>
-            {posts && !loading ? (
-              posts.map((post) => <Post post={post} key={post.postId} />)
-            ) : (
-              <PostSkeleton />
-            )}
-          </Grid>
-          <Grid item md={4} sm={12} xs={12}>
-            <Profile />
-          </Grid>
+      {/* {authenticated ? ( */}
+      <Grid container spacing={4}>
+        <Grid item md={8} sm={12} xs={1}>
+          <PostaPost />
         </Grid>
-      ) : (
+        <Grid item md={8} sm={12} xs={12}>
+          {posts && !loading ? (
+            posts.map((post) => <Post post={post} key={post.postId} />)
+          ) : (
+            <PostSkeleton />
+          )}
+        </Grid>
+        <Grid item md={4} sm={12} xs={12}>
+          <Profile />
+        </Grid>
+      </Grid>
+      ){/* : (
         <Profile />
-      )}
+      )} */}
     </div>
   );
 };
